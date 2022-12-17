@@ -1,0 +1,43 @@
+{
+    "read.and.show.vidoe":{
+        "prefix": "!readandshowvideo",
+        "scope": "python",
+        "body":[
+            "cap = cv2.VideoCapture(${1:0})",
+            "if(cap.isOpened()==False):",
+            "   print('Error opening video stream or file')",
+            "while(cap.isOpened()):",
+            "   ret,frame = cap.read()",
+            "   if ret == True:",
+            "       cv2.imshow('Frame',frame):",
+            "       if cv2.waitKey(25) & 0xFF == ord('q'):",
+            "           break",
+            "   else:",
+            "       break",
+            "cap.release()",
+            "cv2.destroyAllWindows()",
+        ],
+        "description": "read and show video snippets"
+    },
+    "load.yaml.file":{
+        "prefix": "!loadyamlfile",
+        "scope": "python",
+        "body": [
+            "with open(\"${1}\",\"${2:r}\") as f:",
+            "    ${3:yaml_data} = yaml.safe_load(f)"
+        ],
+        "description": "load yaml file snippets"
+    },
+    "improt.common.libaries":{
+        "prefix": "!importcommonlibaries",
+        "scope": "python",
+        "body": [
+            "import os",
+            "import cv2",
+            "import numpy as np",
+            "import pandas as pd",
+            "import matplotlib.pyplot as plt",
+        ],
+        "description": "import common libaries for data analysis"
+    }
+}
